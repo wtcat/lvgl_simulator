@@ -1,0 +1,8 @@
+[submodule "lvgl"]
+	path = lvgl
+	url = https://hub.fastgit.xyz/lvgl/lvgl
+	branch = master
+[submodule "lv_drivers"]
+	path = lv_drivers
+	url = https://hub.fastgit.xyz/lvgl/lv_drivers
+	branch = master
