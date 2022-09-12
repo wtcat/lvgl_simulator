@@ -21,6 +21,7 @@
 
 //#define USE_SDL_GPU 1
 #define USE_SDL 1
+#define USE_CUSTOM_MALLOC 1
 
 
 /*====================
@@ -60,10 +61,18 @@
     #define LV_SPRINTF_USE_FLOAT 0
 #endif  /*LV_USE_BUILTIN_SNPRINTF*/
 
+#if USE_CUSTOM_MALLOC
+#define LV_STDLIB_INCLUDE "mtrace.h"
+#define LV_MALLOC       _ui_malloc
+#define LV_REALLOC      _ui_realloc
+#define LV_FREE         _ui_free
+#else
 #define LV_STDLIB_INCLUDE <stdint.h>
 #define LV_MALLOC       lv_malloc_builtin
 #define LV_REALLOC      lv_realloc_builtin
 #define LV_FREE         lv_free_builtin
+#endif
+
 #define LV_MEMSET       lv_memset_builtin
 #define LV_MEMCPY       lv_memcpy_builtin
 #define LV_SNPRINTF     lv_snprintf_builtin

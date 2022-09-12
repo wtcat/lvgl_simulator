@@ -66,7 +66,13 @@ set(CMAKE_C_STANDARD   11)
 set(CMAKE_CXX_STANDARD 17)
 
 # Generate executable file
-add_executable(${TARGET_NAME} "main.cc")
+add_executable(${TARGET_NAME} 
+    main.cc 
+#    backtrace.cc
+    mtrace.c
+)
+
+add_subdirectory(thirdparty)
 
 # LVGL Sources
 static_library(lvgl)

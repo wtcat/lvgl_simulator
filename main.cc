@@ -5,9 +5,9 @@
 #include "lvgl.h"
 #include "lvgl/demos/lv_demos.h"
 #include "lv_drivers/sdl/sdl.h"
+#include "mtrace.h"
 
 #include <stdio.h>
-
 
 #define SCREEN_HOR_RES     480
 #define SCREEN_VER_RES     320
@@ -46,7 +46,9 @@ static void lv_input_setup(void) {
     lv_indev_set_cursor(input_mouse, mouse_cursor);
 }
 
+extern "C" void _lvgl_mem_init(void);
 int main(int argc, char* argv[]) {
+    _ui_mem_init();
     lv_init();
     lv_driver_setup();
     lv_input_setup();
